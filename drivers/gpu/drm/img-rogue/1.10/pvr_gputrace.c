@@ -551,36 +551,36 @@ static void _GpuTraceWorkSwitch(IMG_UINT64 ui64HWTimestampInOSTime,
 
 static void _GpuTraceUfo(IMG_UINT64 ui64OSTimestamp,
 			 const RGX_HWPERF_UFO_EV eEvType,
-			 const IMG_UINT32 ui32CtxId,
 			 const IMG_UINT32 ui32ExtJobRef,
-			 const IMG_UINT32 ui32IntJobRef,
+			 const IMG_UINT32 ui32CtxId,
+			 const IMG_UINT32 ui32JobId,
 			 const IMG_UINT32 ui32UFOCount,
 			 const RGX_HWPERF_UFO_DATA_ELEMENT *puData)
 {
 	switch (eEvType) {
 		case RGX_HWPERF_UFO_EV_UPDATE:
 			trace_rogue_ufo_updates(ui64OSTimestamp, ui32CtxId,
-						ui32ExtJobRef, ui32IntJobRef,
+						ui32JobId,
 						ui32UFOCount, puData);
 			break;
 		case RGX_HWPERF_UFO_EV_CHECK_SUCCESS:
 			trace_rogue_ufo_checks_success(ui64OSTimestamp, ui32CtxId,
-						       ui32ExtJobRef, ui32IntJobRef,
+						       ui32JobId,
 						       IMG_FALSE, ui32UFOCount, puData);
 			break;
 		case RGX_HWPERF_UFO_EV_PRCHECK_SUCCESS:
 			trace_rogue_ufo_checks_success(ui64OSTimestamp, ui32CtxId,
-						       ui32ExtJobRef, ui32IntJobRef,
+						       ui32JobId,
 						       IMG_TRUE, ui32UFOCount, puData);
 			break;
 		case RGX_HWPERF_UFO_EV_CHECK_FAIL:
 			trace_rogue_ufo_checks_fail(ui64OSTimestamp, ui32CtxId,
-						    ui32ExtJobRef, ui32IntJobRef,
+						    ui32JobId,
 						    IMG_FALSE, ui32UFOCount, puData);
 			break;
 		case RGX_HWPERF_UFO_EV_PRCHECK_FAIL:
 			trace_rogue_ufo_checks_fail(ui64OSTimestamp, ui32CtxId,
-						    ui32ExtJobRef, ui32IntJobRef,
+						    ui32JobId,
 						    IMG_TRUE, ui32UFOCount, puData);
 			break;
 		default:
