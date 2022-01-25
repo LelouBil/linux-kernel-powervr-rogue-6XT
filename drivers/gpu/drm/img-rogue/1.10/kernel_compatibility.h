@@ -363,3 +363,17 @@ static inline bool seq_has_overflowed(struct seq_file *m)
 #endif /* defined(CONFIG_L4) */
 
 #endif /* __KERNEL_COMPATIBILITY_H__ */
+
+/* * Before v5.8, the "struct mm" has a semaphore named "mmap_sem" which is
+* renamed to "mmap_lock" in  v5.8. Moreover, new APIs are provided to
+* access this lock starting from v5.8.
+*/
+#if (LINUX_VERSION_CODE < KERNEL_VERSION(5, 8, 0))
+
+#define mmap_write_lock(mm) down_write(&mm->mmap_sem)
+#define mmap_write_unlock(mm) up_write(&mm->mmap_sem)
+
+#define mmap_read_lock(mm) down_read(&mm->mmap_sem)
+#define mmap_read_unlock(mm) up_read(&mm->mmap_sem)
+
+#endif /* LINUX_VERSION_CODE < KERNEL_VERSION(5, 8, 0) */
