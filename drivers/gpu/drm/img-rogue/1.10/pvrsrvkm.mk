@@ -161,6 +161,8 @@ pvrsrvkm_1_10-y += \
 endif
 pvrsrvkm_1_10-$(CONFIG_ARM)   += osfunc_arm.o
 pvrsrvkm_1_10-$(CONFIG_ARM64) += osfunc_arm64.o
-pvrsrvkm_1_10-$(CONFIG_EVENT_TRACING) += trace_events.o
+ifeq ($(PVR_TRACEPOINTS),1)
+ pvrsrvkm_1_10-$(CONFIG_EVENT_TRACING) += trace_events.o
+endif
 pvrsrvkm_1_10-$(CONFIG_MIPS)  += osfunc_mips.o
 pvrsrvkm_1_10-$(CONFIG_X86)   += osfunc_x86.o

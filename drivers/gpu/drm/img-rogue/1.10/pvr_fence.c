@@ -52,8 +52,21 @@ CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 #include "services_kernel_client.h"
 #include "sync_checkpoint_external.h"
 
+#if defined(PVR_TRACEPOINTS)
 #define CREATE_TRACE_POINTS
 #include "pvr_fence_trace.h"
+#else
+#define trace_pvr_fence_signal_fence(...)
+#define trace_pvr_fence_context_create(...)
+#define trace_pvr_fence_context_destroy_kref(...)
+#define trace_pvr_fence_context_destroy(...)
+#define trace_pvr_fence_enable_signaling(...)
+#define trace_pvr_fence_release(...)
+#define trace_pvr_fence_create(...)
+#define trace_pvr_fence_foreign_release(...)
+#define trace_pvr_fence_foreign_signal(...)
+#define trace_pvr_fence_foreign_create(...)
+#endif
 
 /* This header must always be included last */
 #include "kernel_compatibility.h"

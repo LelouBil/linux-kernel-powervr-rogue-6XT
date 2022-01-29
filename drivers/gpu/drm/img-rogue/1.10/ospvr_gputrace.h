@@ -47,7 +47,7 @@ CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 #include "rgx_hwperf.h"
 #include "device.h"
 
-#if defined(LINUX)
+#if defined(LINUX) && defined(PVR_TRACEPINTS)
 
 void PVRGpuTraceEnqueueEvent(
 		PVRSRV_DEVICE_NODE *psDevNode,

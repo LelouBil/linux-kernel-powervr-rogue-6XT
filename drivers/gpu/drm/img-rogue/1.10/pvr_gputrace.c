@@ -40,6 +40,7 @@ IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
 CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 */ /**************************************************************************/
 
+#if defined(PVR_TRACEPOINTS)
 #include <linux/version.h>
 #if (LINUX_VERSION_CODE >= KERNEL_VERSION(4, 2, 0))
 #include <linux/trace_events.h>
@@ -1240,6 +1241,8 @@ void PVRGpuTraceDisableFirmwareActivityCallback(void)
 
 	OSLockRelease(ghLockFTraceEventLock);
 }
+
+#endif /* PVR_TRACEPOINTS */
 
 /******************************************************************************
  End of file (pvr_gputrace.c)

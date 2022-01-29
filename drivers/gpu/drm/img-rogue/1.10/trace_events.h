@@ -49,7 +49,7 @@ CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  * enabled, just like the actual trace event functions that the kernel
  * defines for us.
  */
-#ifdef CONFIG_EVENT_TRACING
+#if defined(CONFIG_EVENT_TRACING) && defined(PVR_TRACEPOINTS)
 bool trace_rogue_are_fence_checks_traced(void);
 
 bool trace_rogue_are_fence_updates_traced(void);

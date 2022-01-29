@@ -101,7 +101,11 @@ CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 #ifdef __linux__
 #include <linux/kernel.h>	/* sprintf */
 #include <linux/string.h>	/* strncpy, strlen */
+#if defined(PVR_TRACEPOINTS)
 #include "rogue_trace_events.h"
+#else
+#define trace_rogue_create_fw_context(...)
+#endif
 #else
 #include <stdio.h>
 #include <string.h>
