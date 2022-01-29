@@ -99,7 +99,7 @@ void PVRGpuTraceDisableFirmwareActivityCallback(void);
 
 #else /* define(LINUX) */
 
-inline void PVRGpuTraceEnqueueEvent(
+static inline void PVRGpuTraceEnqueueEvent(
 		PVRSRV_DEVICE_NODE *psDevNode,
 		IMG_UINT32 ui32FirmwareCtx,
 		IMG_UINT32 ui32ExternalJobRef,
@@ -112,29 +112,29 @@ inline void PVRGpuTraceEnqueueEvent(
 	PVR_UNREFERENCED_PARAMETER(eKickType);
 }
 
-inline PVRSRV_ERROR PVRGpuTraceSupportInit(void) {
+static inline PVRSRV_ERROR PVRGpuTraceSupportInit(void) {
 	return PVRSRV_OK;
 }
 
-inline void PVRGpuTraceSupportDeInit(void) {}
+static inline void PVRGpuTraceSupportDeInit(void) {}
 
-inline void PVRGpuTraceInitAppHintCallbacks(const PVRSRV_DEVICE_NODE *psDeviceNode)
+static inline void PVRGpuTraceInitAppHintCallbacks(const PVRSRV_DEVICE_NODE *psDeviceNode)
 {
 	PVR_UNREFERENCED_PARAMETER(psDeviceNode);
 }
 
-inline PVRSRV_ERROR PVRGpuTraceInitDevice(PVRSRV_DEVICE_NODE *psDeviceNode)
+static inline PVRSRV_ERROR PVRGpuTraceInitDevice(PVRSRV_DEVICE_NODE *psDeviceNode)
 {
 	PVR_UNREFERENCED_PARAMETER(psDeviceNode);
 	return PVRSRV_OK;
 }
 
-inline void PVRGpuTraceDeInitDevice(PVRSRV_DEVICE_NODE *psDeviceNode)
+static inline void PVRGpuTraceDeInitDevice(PVRSRV_DEVICE_NODE *psDeviceNode)
 {
 	PVR_UNREFERENCED_PARAMETER(psDeviceNode);
 }
 
-inline PVRSRV_ERROR PVRGpuTraceSetEnabled(
+static inline PVRSRV_ERROR PVRGpuTraceSetEnabled(
 		PVRSRV_DEVICE_NODE *psDeviceNode,
 		IMG_BOOL bNewValue)
 {
@@ -143,21 +143,21 @@ inline PVRSRV_ERROR PVRGpuTraceSetEnabled(
 	return PVRSRV_OK;
 }
 
-inline IMG_BOOL PVRGpuTraceIsEnabled(void)
+static inline IMG_BOOL PVRGpuTraceIsEnabled(void)
 {
 	return IMG_FALSE;
 }
 
-void PVRGpuTraceInitIfEnabled(PVRSRV_DEVICE_NODE *psDeviceNode)
+static void PVRGpuTraceInitIfEnabled(PVRSRV_DEVICE_NODE *psDeviceNode)
 {
 	PVR_UNREFERENCED_PARAMETER(psDeviceNode);
 }
 
-inline void PVRGpuTraceEnableUfoCallback(void) {}
-inline void PVRGpuTraceDisableUfoCallback(void) {}
+static inline void PVRGpuTraceEnableUfoCallback(void) {}
+static inline void PVRGpuTraceDisableUfoCallback(void) {}
 
-inline void PVRGpuTraceEnableFirmwareActivityCallback(void) {}
-inline void PVRGpuTraceDisableFirmwareActivityCallback(void) {}
+static inline void PVRGpuTraceEnableFirmwareActivityCallback(void) {}
+static inline void PVRGpuTraceDisableFirmwareActivityCallback(void) {}
 
 #endif /* define(LINUX) */
 
