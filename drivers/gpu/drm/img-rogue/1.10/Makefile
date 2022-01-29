@@ -9,7 +9,8 @@ ccflags-y += \
  -I$(img_basedir) \
  -I$(img_basedir)/km \
  -I$(img_basedir)/system \
- -D__linux__
+ -D__linux__ \
+ -DSUPPORT_TRUSTED_DEVICE
 
 include $(img_basedir)/pvrsrvkm.mk
 include $(img_basedir)/mt8173/Makefile
